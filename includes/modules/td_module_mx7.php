@@ -11,8 +11,9 @@ class td_module_mx7 extends td_module {
         $length = 255;
 
         if(strlen($truncate) > $length) {
-            $truncate = explode("\n", wordwrap($truncate), $length);
-            $truncate = $truncate[0]  . '...';
+            $wordwrap = wordwrap($truncate, $length, "\n");
+            $truncate = explode("\n", $wordwrap, $length);
+            $truncate = $truncate[0] . '...';
         }
         return $truncate;
     }
@@ -26,8 +27,10 @@ class td_module_mx7 extends td_module {
                 <?php echo $this->get_image('td_218x150');?>
                 <?php if (td_util::get_option('tds_category_module_mx7') == 'yes') { echo $this->get_category(); }?>
             </div>
+
             <div class="item-details">
                 <?php echo $this->get_title();?>
+                
                 <div class="td-excerpt">
                     <?php echo $this->truncate_excerpt(); ?>
                 </div>
