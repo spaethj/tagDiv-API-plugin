@@ -92,7 +92,7 @@ class td_api_plugin {
                             "type" => "textfield",
                             "value" => '',
                             "heading" => 'Title Link:',
-                            "description" => "Optional - Add link on title block.",
+                            "description" => "Optional - Add link on title block. (e.g: /slug/taxonomy)",
                             "holder" => "div",
                             "class" => "",
                         ),
@@ -135,6 +135,22 @@ class td_api_plugin {
 
                     )
                 ),
+            )
+        );
+
+        td_api_module::update('td_module_trending_now',
+            array(
+                'file' => $this->plugin_path . '/includes/modules/td_module_trending_now.php',
+                'text' => 'Trending now module',
+                'img' => '',
+                'used_on_blocks' => '',
+                'excerpt_title' => 25,
+                'excerpt_content' => '',
+                'enabled_on_more_articles_box' => false,
+                'enabled_on_loops' => false,
+                'uses_columns' => false,
+                'category_label' => false,
+                'class' => '',
             )
         );
     }

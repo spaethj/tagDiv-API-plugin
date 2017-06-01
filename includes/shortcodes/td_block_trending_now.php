@@ -40,6 +40,7 @@ class td_block_trending_now extends td_block {
         //get the ajax pagination for this block (not required - this block comes with it's own pagination)
         //$buffy .= $this->get_block_pagination();
         $buffy .= '</div> <!-- ./block -->';
+
         return $buffy;
     }
 
@@ -52,6 +53,11 @@ class td_block_trending_now extends td_block {
             $navigation = $atts['navigation'];
         }
 
+        $title_link = '';
+        if (!empty($atts['title_link'])) {
+            $title_link = $atts['title_link'];
+        }
+
         $td_block_layout = new td_block_layout();
 
         if (!empty($posts)) {
@@ -59,12 +65,12 @@ class td_block_trending_now extends td_block {
             $buffy .= $td_block_layout->open_row();
 
             $buffy .= '<div class="td-trending-now-wrapper" id="' . $this->block_uid . '" data-start="' . esc_attr($navigation) . '">';
-            $buffy .= '<a href="' . $atts['title_link'] . '" class="td-trending-now-title">' . __td('Trending Now', TD_THEME_NAME) . '</a>';
+            $buffy .= '<a href="' . $title_link . '" class="td-trending-now-title">' . __td('Trending Now', TD_THEME_NAME) . '</a>';
             $buffy .= '<div class="td-trending-now-display-area">';
 
                 foreach ($posts as $post_count => $post) {
 
-                    $td_module_trending_now = new td_module_trending_now($post);
+                    $td_module_trending_now = new td_module_trending_now($post, $title_link);
 
                     $buffy .= $td_module_trending_now->render($post_count);
                 }
@@ -85,7 +91,7 @@ class td_block_trending_now extends td_block {
                                   data-control-start="' . $navigation . '"><i class="td-icon-menu-right"></i></a>';
             $buffy .= '</div>';
             $buffy .= '</div>';
-
+            
             $buffy .= $td_block_layout->close_row();
         }
 
