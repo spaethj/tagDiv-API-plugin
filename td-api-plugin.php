@@ -39,18 +39,6 @@ class td_api_plugin {
             )
         );
 
-        td_api_single_template::add('single_template_301',
-            array(
-                'file' => $this->plugin_path . '/single_template_301.php',
-                'text' => 'Single template 301',
-                'img' => $this->plugin_url . '/images/panel/single_templates/single_template_301.png',
-                'show_featured_image_on_all_pages' => false,
-                'bg_disable_background' => false,
-                'bg_box_layout_config' => 'auto',
-                'bg_use_featured_image_as_background' => false
-            )
-        );
-
         td_api_module::update('td_module_mx7',
             array(
                 'file' => $this->plugin_path . '/includes/modules/td_module_mx7.php',
