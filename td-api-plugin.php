@@ -22,6 +22,25 @@ class td_api_plugin {
 
     function hook_td_global_after()
     {
+
+        // Sort by date (default: random) related posts in more articles box.
+        td_api_module::update('td_module_6',
+            array(
+                'file' => $this->plugin_path . '/includes/modules/td_module_6.php',
+                'text' => 'Module 6',
+                'img' => $this->plugin_url . '/images/panel/modules/td_module_6.png',
+                'used_on_blocks' => '',
+                'excerpt_title' => 12,
+                'excerpt_content' => '',
+                'enabled_on_more_articles_box' => true,
+                'enabled_on_loops' => true,
+                'uses_columns' => true,
+                'category_label' => true,
+                'class' => 'td_module_6 td_module_wrap td-animation-stack',
+            )
+        );
+
+        // Delete related more from author at the botom of all posts.
         td_api_block::update('td_block_related_posts',
             array(
                 'map_in_visual_composer' => false,
