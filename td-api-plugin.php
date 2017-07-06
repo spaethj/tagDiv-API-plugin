@@ -22,6 +22,7 @@ class td_api_plugin {
 
     function hook_td_global_after()
     {
+        // Template for 'taxonomy-type-darticle-le-flash.php'
         td_api_module::add('td_module_110',
             array(
                 'file' => $this->plugin_path . '/includes/modules/td_module_110.php',
@@ -39,6 +40,92 @@ class td_api_plugin {
             )
         );
 
+        // Add new block in Visual Composer, to shown images registered in 'Thumbnail image' field (view 'n_magazine' taxonomy).
+        td_api_block::add('td_block_thumbnail_taxonomy',
+            array(
+                'map_in_visual_composer' => true,
+                "name" => 'Thumbnail Taxonomy',
+                "base" => 'td_block_thumbnail_taxonomy',
+                "class" => 'td_block_thumbnail_taxonomy',
+                "controls" => "full",
+                "category" => 'Blocks',
+                'icon' => $this->plugin_url . '/images/panel/blocks/block-thumbnail-taxonomy.png',
+                'file' => $this->plugin_path . '/includes/shortcodes/td_block_thumbnail_taxonomy.php',
+                "params" => array(
+                    array(
+                        "param_name" => "custom_title",
+                        "type" => "textfield",
+                        "value" => "",
+                        "heading" => 'Optional - custom title for this block:',
+                        "description" => "",
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array(
+                        "param_name" => "limit",
+                        "type" => "textfield",
+                        "value" => "0",
+                        "heading" => 'Limit the number of cover shown:',
+                        "description" => "",
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array(
+                        "param_name" => "offset",
+                        "type" => "textfield",
+                        "value" => "0",
+                        "heading" => 'Offset cover',
+                        "description" => 'Start the count with an offset.',
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array(
+                        "param_name" => "name__like",
+                        "type" => "textfield",
+                        "value" => "",
+                        "heading" => 'Filter by terms name:',
+                        "description" => "Type common string about all terms name you want shown. (e.g. To filter by Monthly magazine, type 'n°')",
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array(
+                        "param_name" => "column",
+                        "type" => "dropdown",
+                        "value" => array('One' => 'one', 'Two' => 'two', 'Three' => 'three', 'Four' => 'four'),
+                        "heading" => 'Column(s)',
+                        "description" => "Shown your covers on one, two, three or four columns",
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array (
+                        'param_name' => 'css',
+                        'value' => '',
+                        'type' => 'css_editor',
+                        'heading' => 'Css',
+                        'group' => 'Design options',
+                    )
+                )
+            )
+        );
+
+        // Template for 'taxonomy-n_magazine.php'
+        td_api_module::update('td_module_8',
+            array(
+                'file' => $this->plugin_path . '/includes/modules/td_module_8.php',
+                'text' => 'Module 8',
+                'img' => '',
+                'used_on_blocks' => array('td_block_9', 'td_block_17'),
+                'excerpt_title' => '',
+                'excerpt_content' => '',
+                'enabled_on_more_articles_box' => true,
+                'enabled_on_loop' => true,
+                'uses_columns' => true,
+                'category_label' => true,
+                'class' => 'td_module_wrap'
+            )
+        );
+
+        // Update 'Module MX7' to show only the 255 first characters of the excerpt.
         td_api_module::update('td_module_mx7',
             array(
                 'file' => $this->plugin_path . '/includes/modules/td_module_mx7.php',
@@ -55,6 +142,7 @@ class td_api_plugin {
             )
         );
 
+        // Add link on title block through 'Title Link' field.
         td_api_block::update('td_block_trending_now',
             array(
                 'map_in_visual_composer' => true,
