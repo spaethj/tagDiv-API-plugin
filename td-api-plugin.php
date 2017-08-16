@@ -108,6 +108,40 @@ class td_api_plugin {
             )
         );
 
+        // The lightway to add video from Youtube
+        td_api_block::add('td_block_youtube',
+            array(
+                'map_in_visual_composer' => true,
+                "name" => 'Youtube',
+                "base" => 'td_block_youtube',
+                "class" => 'td_block_youtube',
+                "controls" => "full",
+                "category" => 'Blocks',
+                'icon' => $this->plugin_url . '/images/panel/blocks/td-block-youtube.png',
+                'file' => $this->plugin_path . '/includes/shortcodes/td_block_youtube.php',
+                "params" => array(
+                    array(
+                        "param_name" => "custom_title",
+                        "type" => "textfield",
+                        "value" => "",
+                        "heading" => 'Block title',
+                        "description" => "",
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array(
+                        "param_name" => "yt_video_link",
+                        "type" => "textfield",
+                        "value" => "",
+                        "heading" => 'Youtube video link',
+                        "description" => "",
+                        "holder" => "div",
+                        "class" => ""
+                    )
+                )
+            )
+        );
+
         // Template for 'taxonomy-n_magazine.php'
         td_api_module::update('td_module_8',
             array(
