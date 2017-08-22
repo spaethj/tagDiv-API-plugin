@@ -47,6 +47,74 @@ class td_api_plugin {
                 'file' => $this->plugin_path . '/includes/shortcodes/td_block_related_posts.php',
             )
         );
+
+        // Add new block in Visual Composer, to shown images registered in 'Thumbnail image' field (view 'n_magazine' taxonomy).
+        td_api_block::add('td_block_thumbnail_taxonomy',
+            array(
+                'map_in_visual_composer' => true,
+                "name" => 'Thumbnail Taxonomy',
+                "base" => 'td_block_thumbnail_taxonomy',
+                "class" => 'td_block_thumbnail_taxonomy',
+                "controls" => "full",
+                "category" => 'Blocks',
+                'icon' => $this->plugin_url . '/images/panel/blocks/block-thumbnail-taxonomy.png',
+                'file' => $this->plugin_path . '/includes/shortcodes/td_block_thumbnail_taxonomy.php',
+                "params" => array(
+                    array(
+                        "param_name" => "custom_title",
+                        "type" => "textfield",
+                        "value" => "",
+                        "heading" => 'Optional - custom title for this block:',
+                        "description" => "",
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array(
+                        "param_name" => "limit",
+                        "type" => "textfield",
+                        "value" => "0",
+                        "heading" => 'Limit the number of cover shown:',
+                        "description" => "",
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array(
+                        "param_name" => "offset",
+                        "type" => "textfield",
+                        "value" => "0",
+                        "heading" => 'Offset cover',
+                        "description" => 'Start the count with an offset.',
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array(
+                        "param_name" => "name__like",
+                        "type" => "textfield",
+                        "value" => "",
+                        "heading" => 'Filter by terms name:',
+                        "description" => "Type common string about all terms name you want shown. (e.g. To filter by Monthly magazine, type 'n°')",
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array(
+                        "param_name" => "column",
+                        "type" => "dropdown",
+                        "value" => array('One' => 'one', 'Two' => 'two', 'Three' => 'three', 'Four' => 'four'),
+                        "heading" => 'Column(s)',
+                        "description" => "Shown your covers on one, two, three or four columns",
+                        "holder" => "div",
+                        "class" => ""
+                    ),
+                    array (
+                        'param_name' => 'css',
+                        'value' => '',
+                        'type' => 'css_editor',
+                        'heading' => 'Css',
+                        'group' => 'Design options',
+                    )
+                )
+            )
+        );
     }
 
 }
