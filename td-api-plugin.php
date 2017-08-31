@@ -110,7 +110,7 @@ class td_api_plugin {
                         'value' => '',
                         'type' => 'css_editor',
                         'heading' => 'Css',
-                        'group' => 'Design options',
+                        'group' => 'Design options'
                     )
                 )
             )
