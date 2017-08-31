@@ -7,7 +7,7 @@ class td_module_mx7 extends td_module {
     }
 
     function truncate_excerpt() {
-        $truncate = $this->get_excerpt();
+        $truncate = strip_tags($this->get_excerpt());
         $length = 255;
 
         if(strlen($truncate) > $length) {
