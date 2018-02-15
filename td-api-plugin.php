@@ -306,6 +306,34 @@ class td_api_plugin {
                 'class' => '',
             )
         );
+
+	    // Add new block in Visual Composer to shown "Publi-Communiqués" in the home page and the sidebars
+	    td_api_block::add('td_publi',
+		    array(
+			    'map_in_visual_composer' => true,
+			    'name' => 'Block Publi-Commnuniqué',
+			    'base' => 'td_publi',
+			    'class' => 'td_publi',
+			    'control' => 'full',
+			    "category" => 'Blocks',
+			    'icon' => $this->plugin_url . '/images/panel/blocks/block-publi.png',
+			    'file' => $this->plugin_path . '/includes/shortcodes/td_publi.php',
+			    "params" => array_merge(
+				    array(
+					    array(
+						    "param_name" => "title",
+						    "type" => "textfield",
+						    "value" => "",
+						    "heading" => 'Custom title for this block:',
+						    "description" => "Optional - a title for this block, if you leave it blank the block will not have a title",
+						    "holder" => "div",
+						    "class" => ""
+					    )
+				    ),
+				    td_config::get_map_filter_array()
+			    )
+		    )
+	    );
     }
 
 }
