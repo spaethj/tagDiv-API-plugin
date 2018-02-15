@@ -334,6 +334,23 @@ class td_api_plugin {
 			    )
 		    )
 	    );
+
+	    // Fork of td_module_10. Displays the title, thumbnail and excerpt in "td_publi" block.
+	    td_api_module::add('td_module_210',
+		    array(
+			    'file' => $this->plugin_path . '/includes/modules/td_module_210.php',
+			    'text' => 'Module 210',
+			    'img' => $this->plugin_url . '/images/panel/modules/td_module_210.png',
+			    'used_on_blocks' => array('td_publi'),
+			    'excerpt_title' => 12,
+			    'excerpt_content' => '',
+			    'enabled_on_more_articles_box' => true,
+			    'enabled_on_loops' => true,
+			    'uses_columns' => true,
+			    'category_label' => true,
+			    'class' => 'td_module_10 td_module_wrap td-animation-stack',
+		    )
+	    );
     }
 
 }
