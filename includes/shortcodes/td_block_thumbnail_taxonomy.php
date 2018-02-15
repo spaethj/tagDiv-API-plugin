@@ -1,21 +1,20 @@
 <?php
 
-class td_block_thumbnail_taxonomy extends td_block {
+class td_block_thumbnail_taxonomy extends td_block
+{
 
-    function __construct() {
-        parent::disable_loop_block_features();
-    }
-
-    function thumbnail_image_isset($term_ids, $term_names) {
+    function thumbnail_image_isset($term_ids, $term_names)
+    {
         $buffy = '';
 
         if (function_exists('get_thumbnail_image')) {
-            $buffy .= '<img src="' . get_thumbnail_image($term_ids) . '" alt="Flottes Automobiles ' . $term_names . '" title="Magazine ' . $term_names . '" />';
+            $buffy .= '<img src="' . get_thumbnail_image($term_ids) . '" alt="' . get_bloginfo('name') . ' ' .$term_names . '" title="Magazine ' . $term_names . '" />';
         }
         return $buffy;
     }
 
-    function render($atts, $content = null){
+    function render($atts, $content = null)
+    {
         parent::render($atts);
 
         $buffy = '';
@@ -40,9 +39,9 @@ class td_block_thumbnail_taxonomy extends td_block {
 
         $terms = get_terms($args);
 
-        $buffy .= '<div class="' . $this->get_block_classes(array('widget', 'widget_categories')) . '" ' . $this->get_block_html_atts() . '>';
+        $buffy .= '<div class="' . $this->get_block_classes(array('widget', 'widget_categories')) . '">';
 
-        $buffy .= $this->get_block_css();
+
         $buffy .= $this->get_block_title();
 
         if (!empty($terms)) {
