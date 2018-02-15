@@ -351,6 +351,23 @@ class td_api_plugin {
 			    'class' => 'td_module_10 td_module_wrap td-animation-stack',
 		    )
 	    );
+
+	    // Fork of td_module_3. Just don't display meta info.
+	    td_api_module::add('td_module_33',
+		    array(
+			    'file' => $this->plugin_path . '/includes/modules/td_module_33.php',
+			    'text' => 'Module 33',
+			    'img' => $this->plugin_url . '/images/panel/modules/td_module_33.png',
+			    'used_on_blocks' => array('td_module_33'),
+			    'excerpt_title' => 12,
+			    'excerpt_content' => '',
+			    'enabled_on_more_articles_box' => true,
+			    'enabled_on_loops' => true,
+			    'uses_columns' => true,
+			    'category_label' => true,
+			    'class' => 'td_module_wrap td-animation-stack',
+		    )
+	    );
     }
 
 }
