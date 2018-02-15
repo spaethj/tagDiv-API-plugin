@@ -2,7 +2,7 @@
 /*
  * Plugin Name: td-api-plugin
  * Plugin URI: http://tagdiv.com
- * Description: tagDiv API plugin
+ * Description: tagDiv API plugin - flotauto version
  * Author: Jeremy SPAETH
  * Version 1.0
  */
@@ -39,6 +39,49 @@ class td_api_plugin {
                 'group' => ''
             )
         );
+
+	    // Calaméo slider
+	    td_api_block::add('td_block_calameo_slide',
+		    array(
+			    'map_in_visual_composer' => true,
+			    "name" => 'Calaméo Slide',
+			    "base" => "td_block_calameo_slide",
+			    "class" => "td_block_calameo_slide",
+			    "controls" => "full",
+			    "category" => 'Blocks',
+			    'icon' => $this->plugin_url . '/images/panel/blocks/td-block-calameo.png',
+			    'file' => $this->plugin_path . '/includes/shortcodes/td_calameo_slide.php',
+			    "params" => array(
+				    array(
+					    "param_name" => "custom_title",
+					    "type" => "textfield",
+					    "value" => "",
+					    "heading" => 'Block title',
+					    "description" => "",
+					    "holder" => "div",
+					    "class" => ""
+				    ),
+				    array(
+					    "param_name" => "api_public_key",
+					    "type" => "textfield",
+					    "value" => "",
+					    "heading" => 'API Public key',
+					    "description" => "",
+					    "holder" => "div",
+					    "class" => ""
+				    ),
+				    array(
+					    "param_name" => "api_secret_key",
+					    "type" => "textfield",
+					    "value" => "",
+					    "heading" => 'API Secret key',
+					    "description" => "",
+					    "holder" => "div",
+					    "class" => ""
+				    )
+			    )
+		    )
+	    );
 
         // Add new block in Visual Composer, to shown images registered in 'Thumbnail image' field (view 'n_magazine' taxonomy).
         td_api_block::add('td_block_thumbnail_taxonomy',
