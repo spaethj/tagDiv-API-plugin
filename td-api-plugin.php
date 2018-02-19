@@ -83,6 +83,57 @@ class td_api_plugin {
 		    )
 	    );
 
+	    td_api_block::add('td_rss_feed_to_slider',
+		    array(
+			    'map_in_visual_composer' => true,
+			    'name' => 'RSS feed to slider',
+			    'base' => 'td_rss_feed_to_slider',
+			    'class' => 'td_rss_feed_to_slider',
+			    'controls' => 'full',
+			    'category' => 'Blocks',
+			    'icon' => $this->plugin_url . '/images/panel/blocks/td-rss-feed-to-slider.png',
+			    'file' => $this->plugin_path . '/includes/shortcodes/td_rss_feed_to_slider.php',
+			    'params' => array(
+				    array(
+					    "param_name" => "rss_link",
+					    "type" => "textfield",
+					    "value" => "",
+					    "heading" => 'RSS link',
+					    "description" => "Paste the URL of the RSS feed.",
+					    "holder" => "div",
+					    "class" => ""
+				    ),
+				    array(
+					    "param_name" => "custom_title",
+					    "type" => "textfield",
+					    "value" => "",
+					    "heading" => 'Block title',
+					    "description" => "Text to be displayed in bottom left of the slider",
+					    "holder" => "div",
+					    "class" => ""
+				    ),
+				    array(
+					    "param_name" => "image",
+					    "type" => "attach_image",
+					    "value" => "",
+					    "heading" => 'Image',
+					    "description" => "mage à afficher en bas à droite du slider",
+					    "holder" => "div",
+					    "class" => ""
+				    ),
+				    array(
+					    "param_name" => "txt_img_link",
+					    "type" => "vc_link",
+					    "value" => "",
+					    "heading" => 'Text and image link',
+					    "description" => "Add link on the Block title and the Image",
+					    "holder" => "div",
+					    "class" => ""
+				    )
+			    )
+		    )
+	    );
+
         // Add new block in Visual Composer, to shown images registered in 'Thumbnail image' field (view 'n_magazine' taxonomy).
         td_api_block::add('td_block_thumbnail_taxonomy',
             array(
